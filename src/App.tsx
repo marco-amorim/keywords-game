@@ -1,6 +1,7 @@
 import './styles/global.css';
 import KeywordInput from './components/KeywordInput';
 import KeywordsBoard from './components/KeywordsBoard';
+import { useState } from 'react';
 
 const allKeywords = [
 	'abstract',
@@ -55,13 +56,21 @@ const allKeywords = [
 	'while',
 ];
 
-function App() {
+const App = () => {
+	const [currentWord, setCurrentWord] = useState<string>('');
+
 	return (
-		<div className="game">
-			<KeywordInput />
-			<KeywordsBoard keywords={allKeywords} />
-		</div>
+		<>
+			{console.log(currentWord)}
+			<div className="game">
+				<KeywordInput
+					typingState={currentWord}
+					setTypingState={(word) => setCurrentWord(word)}
+				/>
+				<KeywordsBoard keywords={allKeywords} />
+			</div>
+		</>
 	);
-}
+};
 
 export default App;
