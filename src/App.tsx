@@ -1,7 +1,7 @@
 import './styles/global.css';
 import KeywordInput from './components/KeywordInput';
 import KeywordsBoard from './components/KeywordsBoard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const allKeywords = [
 	'abstract',
@@ -58,6 +58,18 @@ const allKeywords = [
 
 const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
+	const [correctWords, setCorrectWords] = useState<string[]>([]);
+
+	useEffect(() => {
+		if (
+			allKeywords.includes(currentWord) &&
+			!correctWords.includes(currentWord)
+		) {
+			setCorrectWords([...correctWords, currentWord]);
+			setCurrentWord('');
+			console.log(correctWords);
+		}
+	}, [correctWords, currentWord]);
 
 	return (
 		<>
@@ -67,7 +79,7 @@ const App = () => {
 					typingState={currentWord}
 					setTypingState={(word) => setCurrentWord(word)}
 				/>
-				<KeywordsBoard keywords={allKeywords} />
+				<KeywordsBoard keywords={correctWords} />
 			</div>
 		</>
 	);
