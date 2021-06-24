@@ -67,21 +67,17 @@ const App = () => {
 		) {
 			setCorrectWords([...correctWords, currentWord]);
 			setCurrentWord('');
-			console.log(correctWords);
 		}
 	}, [correctWords, currentWord]);
 
 	return (
-		<>
-			{console.log(currentWord)}
-			<div className="game">
-				<KeywordInput
-					typingState={currentWord}
-					setTypingState={(word) => setCurrentWord(word)}
-				/>
-				<KeywordsBoard keywords={correctWords} />
-			</div>
-		</>
+		<div className="game">
+			<KeywordInput
+				typingState={currentWord}
+				setTypingState={(word) => setCurrentWord(word)}
+			/>
+			<KeywordsBoard keywords={correctWords} />
+		</div>
 	);
 };
 
