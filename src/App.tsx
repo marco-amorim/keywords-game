@@ -23,9 +23,10 @@ const App = () => {
 		correctKeywords: number;
 	}
 
-	const calculatePercentage = (percentage: PercentageCalculation) => {
+	const calculatePercentage = (numbersForPercentage: PercentageCalculation) => {
 		return (
-			(percentage.correctKeywords / percentage.keywordsAmount) *
+			(numbersForPercentage.correctKeywords /
+				numbersForPercentage.keywordsAmount) *
 			100
 		).toFixed();
 	};
