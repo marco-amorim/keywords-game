@@ -70,8 +70,26 @@ const App = () => {
 		}
 	}, [correctWords, currentWord]);
 
+	interface PercentageCalculation {
+		keywordsAmount: number;
+		correctKeywords: number;
+	}
+
+	const calculatePercentage = (percentage: PercentageCalculation) => {
+		return (
+			(percentage.correctKeywords / percentage.keywordsAmount) *
+			100
+		).toFixed();
+	};
+
 	return (
 		<div className="game">
+			<h2>{`Correct keywords so far: ${correctWords.length}/${
+				allKeywords.length
+			}, Percentage: ${calculatePercentage({
+				keywordsAmount: allKeywords.length,
+				correctKeywords: correctWords.length,
+			})}%`}</h2>
 			<KeywordInput
 				typingState={currentWord}
 				setTypingState={(word) => setCurrentWord(word)}
