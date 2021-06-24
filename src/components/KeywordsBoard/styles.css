@@ -1,0 +1,13 @@
+.keywords-board {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.keywords-board div {
+	background-color: darkcyan;
+	border-radius: 5px;
+	padding: 5px 0;
+}
