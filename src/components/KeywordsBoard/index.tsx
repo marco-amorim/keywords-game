@@ -2,16 +2,16 @@ import './styles.css';
 import { allKeywords } from '../../data';
 
 interface KeywordsBoardProps {
-	keywords: string[];
+	correctKeywords: string[];
 }
 
-const KeywordsBoard: React.FC<KeywordsBoardProps> = ({ keywords }) => {
+const KeywordsBoard: React.FC<KeywordsBoardProps> = ({ correctKeywords }) => {
 	return (
 		<div className="keywords-board">
 			{allKeywords.map((word, index) => {
 				return (
 					<div key={index}>
-						<p>{keywords.includes(word) ? word : null}</p>
+						<p>{correctKeywords.includes(word) ? word : null}</p>
 					</div>
 				);
 			})}

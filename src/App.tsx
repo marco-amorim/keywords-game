@@ -42,7 +42,7 @@ const App = () => {
 				typingState={currentWord}
 				setTypingState={(word) => setCurrentWord(word)}
 			/>
-			<KeywordsBoard keywords={correctWords} />
+			<KeywordsBoard correctKeywords={correctWords} />
 		</div>
 	);
 };
