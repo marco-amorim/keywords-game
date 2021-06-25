@@ -8,7 +8,7 @@ const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
 	const [correctWords, setCorrectWords] = useState<string[]>([]);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
-	const [timeLeft, setTimeLeft] = useState<number>(3);
+	const [timeLeft, setTimeLeft] = useState<number>(300);
 
 	const checkForCorrectWord = useCallback(() => {
 		if (
