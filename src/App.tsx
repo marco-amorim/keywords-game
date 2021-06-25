@@ -1,16 +1,16 @@
 import './styles/global.css';
 import KeywordInput from './components/KeywordInput';
 import KeywordsBoard from './components/KeywordsBoard';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { allKeywords } from './data';
 
 const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
 	const [correctWords, setCorrectWords] = useState<string[]>([]);
-	const [isPaused, setIsPaused] = useState<boolean>(false);
+	const [isPaused, setIsPaused] = useState<boolean>(true);
 	const [timeLeft, setTimeLeft] = useState<number>(10);
 
-	useEffect(() => {
+	const checkForCorrectWord = useCallback(() => {
 		if (
 			allKeywords.includes(currentWord) &&
 			!correctWords.includes(currentWord)
@@ -18,13 +18,20 @@ const App = () => {
 			setCorrectWords([...correctWords, currentWord]);
 			setCurrentWord('');
 		}
+	}, [correctWords, currentWord]);
 
+	const updateGameState = useCallback(() => {
 		if (!isPaused) {
 			if (timeLeft > 0) {
 				setTimeLeft(timeLeft - 1);
 			}
 		}
-	}, [correctWords, currentWord, isPaused, timeLeft]);
+	}, [isPaused, timeLeft]);
+
+	useEffect(() => {
+		checkForCorrectWord();
+		updateGameState();
+	}, [checkForCorrectWord, updateGameState]);
 
 	interface PercentageCalculation {
 		keywordsAmount: number;
