@@ -8,7 +8,7 @@ const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
 	const [correctWords, setCorrectWords] = useState<string[]>([]);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
-	const [timeLeft, setTimeLeft] = useState<number>(300);
+	const [timeLeft, setTimeLeft] = useState<number>(3);
 
 	const checkForCorrectWord = useCallback(() => {
 		if (
@@ -29,8 +29,9 @@ const App = () => {
 			alert('Congratulations, you won the game!');
 		}
 
-		if (timeLeft === 0) {
+		if (timeLeft === 0 && !isPaused) {
 			alert('Sorry, you lost the game!');
+			setIsPaused(true);
 		}
 	}, [correctWords, isPaused, timeLeft]);
 
@@ -79,6 +80,7 @@ const App = () => {
 			<KeywordInput
 				typingState={currentWord}
 				setTypingState={(word) => setCurrentWord(word)}
+				paused={isPaused}
 			/>
 			<KeywordsBoard correctKeywords={correctWords} />
 		</div>

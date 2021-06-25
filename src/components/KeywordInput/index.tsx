@@ -3,12 +3,14 @@ import './styles.css';
 
 interface KeywordInputProps {
 	typingState: string;
+	paused: boolean;
 	setTypingState: Dispatch<SetStateAction<string>>;
 }
 
 const KeywordInput: React.FC<KeywordInputProps> = ({
 	typingState,
 	setTypingState,
+	paused,
 }) => {
 	return (
 		<div className="word-input">
@@ -19,6 +21,7 @@ const KeywordInput: React.FC<KeywordInputProps> = ({
 				id="word"
 				value={typingState}
 				onChange={(e) => setTypingState(e.target.value)}
+				disabled={paused}
 			/>
 		</div>
 	);
