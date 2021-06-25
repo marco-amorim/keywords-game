@@ -21,5 +21,28 @@ body {
 }
 
 .game h2 {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.game button {
+	width: 150px;
+	height: 30px;
+	background-color: darkcyan;
+	margin: 20px 0;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.game button:hover {
+	background-color: cyan;
+	color: black;
+	transition: all 0.2s ease-in-out;
+}
+
+.game .current-time {
+	font-size: 20px;
 }
