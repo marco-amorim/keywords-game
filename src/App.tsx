@@ -4,11 +4,13 @@ import KeywordsBoard from './components/KeywordsBoard';
 import { useCallback, useEffect, useState } from 'react';
 import { allKeywords } from './data';
 
+const GAME_TIME = 300;
+
 const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
 	const [correctWords, setCorrectWords] = useState<string[]>([]);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
-	const [timeLeft, setTimeLeft] = useState<number>(3);
+	const [timeLeft, setTimeLeft] = useState<number>(GAME_TIME);
 
 	const checkForCorrectWord = useCallback(() => {
 		if (
@@ -64,7 +66,7 @@ const App = () => {
 
 	const handleStartStop = () => {
 		if (timeLeft === 0) {
-			setTimeLeft(3);
+			setTimeLeft(GAME_TIME);
 		}
 		setIsPaused(!isPaused);
 	};
