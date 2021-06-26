@@ -8,7 +8,7 @@ const App = () => {
 	const [currentWord, setCurrentWord] = useState<string>('');
 	const [correctWords, setCorrectWords] = useState<string[]>([]);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
-	const [timeLeft, setTimeLeft] = useState<number>(300);
+	const [timeLeft, setTimeLeft] = useState<number>(3);
 
 	const checkForCorrectWord = useCallback(() => {
 		if (
@@ -62,12 +62,19 @@ const App = () => {
 		}`;
 	};
 
+	const handleStartStop = () => {
+		if (timeLeft === 0) {
+			setTimeLeft(3);
+		}
+		setIsPaused(!isPaused);
+	};
+
 	return (
 		<div className="game">
 			<div className="current-time">{calculateTimeLeft(timeLeft)}</div>
 			<button
 				style={{ backgroundColor: isPaused ? 'green' : 'red' }}
-				onClick={() => setIsPaused(!isPaused)}
+				onClick={handleStartStop}
 			>
 				{isPaused ? 'START' : 'STOP'}
 			</button>
