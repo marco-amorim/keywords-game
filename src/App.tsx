@@ -27,8 +27,11 @@ const App = () => {
 			setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
 		}
 
-		if (correctWords.length === allKeywords.length) {
+		if (correctWords.length === allKeywords.length && !isPaused) {
 			alert('Congratulations, you won the game!');
+			setIsPaused(true);
+			setTimeout(() => setTimeLeft(GAME_TIME), 1000);
+			setCorrectWords([]);
 		}
 
 		if (timeLeft === 0 && !isPaused) {
