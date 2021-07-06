@@ -1,8 +1,8 @@
-import './styles/global.css';
+import { useCallback, useEffect, useState } from 'react';
 import KeywordInput from './components/KeywordInput';
 import KeywordsBoard from './components/KeywordsBoard';
-import { useCallback, useEffect, useState } from 'react';
 import { allKeywords } from './data';
+import './styles/global.css';
 
 const GAME_TIME = 300;
 
@@ -83,9 +83,9 @@ const App = () => {
 			>
 				{isPaused ? 'START' : 'STOP'}
 			</button>
-			<h2>{`Correct keywords so far: ${correctWords.length}/${
+			<h2>{`SCORE: ${correctWords.length}/${
 				allKeywords.length
-			}, Percentage: ${calculatePercentage({
+			} - ${calculatePercentage({
 				keywordsAmount: allKeywords.length,
 				correctKeywords: correctWords.length,
 			})}%`}</h2>

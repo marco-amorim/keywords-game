@@ -12,4 +12,12 @@
 	padding: 5px 0;
 	height: 20px;
 	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 767px) {
+	.keywords-board {
+		grid-template-columns: auto auto;
+	}
 }
