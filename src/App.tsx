@@ -76,6 +76,7 @@ const App = () => {
 
 	return (
 		<div className="game">
+			<h1>Java Keywords Game</h1>
 			<div className="current-time">{calculateTimeLeft(timeLeft)}</div>
 			<button
 				style={{ backgroundColor: isPaused ? 'green' : 'red' }}
