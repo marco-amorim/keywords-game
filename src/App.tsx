@@ -14,10 +14,10 @@ const App = () => {
 
 	const checkForCorrectWord = useCallback(() => {
 		if (
-			allKeywords.includes(currentWord) &&
+			allKeywords.includes(currentWord.toLowerCase()) &&
 			!correctWords.includes(currentWord)
 		) {
-			setCorrectWords([...correctWords, currentWord]);
+			setCorrectWords([...correctWords, currentWord.toLowerCase()]);
 			setCurrentWord('');
 		}
 	}, [correctWords, currentWord]);
