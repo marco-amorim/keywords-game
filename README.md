@@ -1,6 +1,8 @@
 # Java Keywords Game
 
-- Production -> https://keywords.marcoamorim.com/
+## Production
+- https://keywords.marcoamorim.com
+- https://keywords-game.vercel.app
 
 ## All Keywords
 	1. abstract
